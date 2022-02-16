@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{% block title %}Jupyter Notebook{% endblock %}</title>
-    {% block favicon %}<link id="favicon" rel="shortcut icon" type="image/x-icon" href="{{static_url("base/images/favicon.ico") }}">{% endblock %}
+    <title>{% block title %}Notebook : {{notebook_name | urlencode}} : PythonAnywhere{% endblock %}</title>
+    {% block favicon %}<link id="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon.ico">{% endblock %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="{{static_url("components/jquery-ui/themes/smoothness/jquery-ui.min.css") }}" type="text/css" />
     <link rel="stylesheet" href="{{static_url("components/jquery-typeahead/dist/jquery.typeahead.min.css") }}" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     {% block stylesheet %}
     <link rel="stylesheet" href="{{ static_url("style/style.min.css") }}" type="text/css"/>
     {% endblock %}
@@ -123,17 +123,17 @@ dir="ltr">
 </noscript>
 
 <div id="header" role="navigation" aria-label="{% trans %}Top Menu{% endtrans %}">
+
+  {% block above_header_container %}
+  {% endblock %}
+
   <div id="header-container" class="container">
-  <div id="ipython_notebook" class="nav navbar-brand"><a href="{{default_url}}
-    {%- if logged_in and token -%}?token={{token}}{%- endif -%}" title='{% trans %}dashboard{% endtrans %}'>
-      {% block logo %}<img src='{{static_url("base/images/logo.png") }}' alt='Jupyter Notebook'/>{% endblock %}
-  </a></div>
 
   {% block headercontainer %}
   {% endblock %}
-  
+
   {% block header_buttons %}
-  
+
   {% block login_widget %}
 
     <span id="login_widget">
@@ -147,7 +147,7 @@ dir="ltr">
   {% endblock %}
 
   {% endblock header_buttons %}
-  
+
   </div>
   <div class="header-bar"></div>
 
@@ -180,9 +180,9 @@ dir="ltr">
         if (search_parameters.length) {
           new_search = '?' + search_parameters.join('&');
         }
-        var new_url = window.location.origin + 
-                      window.location.pathname + 
-                      new_search + 
+        var new_url = window.location.origin +
+                      window.location.pathname +
+                      new_search +
                       window.location.hash;
         window.history.replaceState({}, "", new_url);
         return;
