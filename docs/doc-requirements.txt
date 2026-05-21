@@ -3,3 +3,4 @@ sphinx-rtd-theme
 nbsphinx
 sphinxcontrib_github_alt
 myst_parser
+idna>=3.15 # not directly required, pinned by Snyk to avoid a vulnerability
