@@ -3,3 +3,5 @@ sphinx-rtd-theme
 nbsphinx
 sphinxcontrib_github_alt
 myst_parser
+bleach>=6.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
+tornado>=6.5.6 # not directly required, pinned by Snyk to avoid a vulnerability
